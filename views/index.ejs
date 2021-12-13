@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music</title>
+
+    <style>
+        button {
+            background: rgb(13, 23, 71);
+            color: white;
+            padding: 10px;
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+        }
+
+        body {
+            display: grid;
+            place-items: center; 
+        }
+
+        .waterfall-notes-container {
+            display: none;
+        }
+    </style>
+
+    <script src="html-midi-player@1.4.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/abcjs/3.1.1/abcjs_basic-min.js" integrity="sha512-rnTAS7IvuTbpAgzyJ0FwsshiqTiqejPc6mUu+SZOS+rjacr3jXMlfNTv1njdP+DK5n5Pl7mS/NPdFst4+uHkJg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        let notes = '<%=notes%>'
+        notes = notes.split(',')
+
+        let rhythm = '<%=rhythm%>'
+        rhythm = rhythm.split(',')
+    </script>
+
+    <script src="Tone.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <midi-player
+        src="<%=dataUri%>"
+        sound-font 
+        visualizer="#myVisualizer">
+    </midi-player>
+
+    <br>
+
+    <midi-visualizer type="waterfall" id="myVisualizer"></midi-visualizer>
+
+    <br>
+    <a href="<%=dataUri%>"><button>download midi</button></a>
+</body>
+</html>
